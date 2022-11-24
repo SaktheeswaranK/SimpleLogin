@@ -1,0 +1,26 @@
+
+<button routerLink="/landingPage" class="btn btn-warning" >Home</button>
+<div class="card">
+    <div class="card-header">
+        Buisness
+    </div>
+    <div class="card-body">
+        <form [formGroup]="unitForm" (ngSubmit)="sub()">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="" formControlName="name" 
+            [ngClass]="{'is-invalid':f['name'].errors && f['name'].touched}"  placeholder="name" id="">
+            <span *ngIf="f['name'].errors && f['name'].touched" class="invalid-feedback" >*required</span><br>
+            <label for="active">Active</label><br>
+            <input type="radio" formControlName="active" value="yes" id="yes">yes <br>
+            <input type="radio" formControlName="active" value="no" id="no"> no <br>
+            <span *ngIf="f['active'].errors && f['active'].touched" class="invalid-feedback" >*required</span><br>
+            <label for="display">Display</label>
+            <input type="text" class="form-control" formControlName="display"
+            [ngClass]="{'is-invalid' : f['display'].errors && f['display'].touched}">
+            <span *ngIf="f['display'].errors && f['display'].touched">*required</span>
+            <div class="card-footer">
+                <button [disabled]="unitForm.invalid" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

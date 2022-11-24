@@ -1,0 +1,63 @@
+<button routerLink="/landingPage" class="btn btn-warning">Home</button>
+
+<div class="card">
+    <div class="card-header">
+        <h1>Employee</h1>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="buisnessForm" (ngSubmit)="save()">
+                <input type="text" class="form-control" id="name" formControlName="name" name="name"
+                [ngClass]="{'is-invalid':f['name'].errors && f['name'].touched}"  placeholder="name">
+                <span *ngIf="f['name'].errors && f['name'].touched" class="invalid-feedback" >*required</span><br>
+                <input type="email" class="form-control" formControlName="email" 
+                [ngClass]="{'is-invalid':f['email'].errors && f['email'].touched}" placeholder="email">
+                <span *ngIf="f['email'].errors" class="invalid-feedback" >
+                    <div *ngIf="f['email'].errors['required'] && f['email'].touched">*required</div>
+                    <div *ngIf="f['email'].errors['email']">*proper mail</div>
+                </span><br>
+                <input type="date" class="form-control" [min]="min" formControlName="dob" 
+                [ngClass]="{'is-invalid':f['dob'].errors && f['dob'].touched}" placeholder="dob">
+                <span *ngIf=" f['dob'].errors && f['dob'].touched" class="invalid-feedback" >*required</span><br>
+                <input type="number" class="form-control" formControlName="age" 
+                [ngClass]="{'is-invalid':f['age'].errors && f['age'].touched }" placeholder="age">
+                <span *ngIf="f['age'].errors && f['age'].touched" class="invalid-feedback" >*required</span><br>
+                <label for="blood" class="form-label">Buisness</label>
+                <select formControlName="buisness" class="form-select" aria-label="Default select example"
+                [ngClass]="{'is-invalid':f['buisness'].errors && f['buisness'].touched} ">
+                    <option selected>selct your blood grp</option>
+                    <option value="web">web</option>
+                    <option value="app">app</option>
+                    <option value="java">java</option>
+                  </select>
+                  <span *ngIf="f['buisness'].errors && f['buisness'].touched" class="invalid-feedback" >*required</span><br>
+                  <label for="phone">Phone</label>
+                <input type="number" class="form-control" formControlName="phone" 
+                [ngClass]="{'is-invalid':f['phone'].errors  && f['phone'].touched}" placeholder="phone number">
+                <span *ngIf="f['phone'].errors" class="invalid-feedback" >
+                    <div *ngIf="f['phone'].errors.required && f['phone'].touched">*required</div>
+                    <div *ngIf="f['phone'].errors.validatePhone">*enter the valid phone number</div>
+                </span><br>
+                <label for="unit">Unit</label>
+                <select formControlName="unit" class="form-select" aria-label="Default select example"
+                [ngClass]="{'is-invalid':f['unit'].errors && f['unit'].touched}">
+                    <option selected>selct your blood grp</option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                  </select>
+                  <span *ngIf="f['unit'].errors && f['unit'].touched" class="invalid-feedback" >*required</span><br>
+                  <label for="city">City</label>
+                  <select formControlName="city" class="form-select" aria-label="Default select example"
+                [ngClass]="{'is-invalid':f['city'].errors && f['city'].touched}">
+                    <option selected>selct your blood grp</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Bangalore">Bangalore</option>
+                  </select>
+                  <span *ngIf="f['city'].errors && f['city'].touched" class="invalid-feedback" >*required</span><br>
+            <div class="card-footer">
+                <button class="btn btn-primary" [disabled]="buisnessForm.invalid">submit</button>
+            </div>
+        </form>
+        </div> 
+</div>

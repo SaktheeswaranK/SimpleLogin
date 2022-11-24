@@ -1,0 +1,36 @@
+<button routerLink="/landingPage" class="btn btn-warning">Home</button>
+
+<div class="card">
+    <div class="card-header">
+        <h1>Unit</h1>
+    </div>
+    <div class="card-body">
+            <form [formGroup]="empForm" (ngSubmit)="sub()">
+                <label for="name">Name</label>
+            <input type="text" class="form-control" name="" formControlName="name" 
+               [ngClass]="{'is-invalid' : f['name'].errors   && f['name'].touched }" id="">
+            <span *ngIf="f.name.errors && f['name'].touched">*required
+                <div *ngIf="f.name.errors.pattern" class="invalid-feedback">*invalid name</div>
+            </span><br>
+            {{f.name.invalid}}
+            <label for="buisness">Buisness</label>
+            <select formControlName="buisness" class="form-select" aria-label="Default select example"
+                [ngClass]="{'is-invalid':f['buisness'].errors && f['buisness'].touched}">
+                    <option selected>selct your blood grp</option>
+                    <option value="web">web</option>
+                    <option value="app">app</option>
+                    <option value="java">java</option>
+                  </select>
+                  <span *ngIf="f['buisness'].errors && f['buisness'].touched" class="invalid-feedback" >*required</span><br>
+                  <label for="disp">Display</label>
+                  <input type="text" formControlName="disp" class="form-control"
+                  [ngClass]="{'is-invalid' : f['disp'].errors && f['disp'].touched}" >
+                  <span *ngIf=""></span>
+                <div class="card-footer">
+                    <button class="btn btn-primary" [disabled]="empForm.invalid">Save</button>
+                </div>
+                <!-- <span>{{f['dis'].invalid}}</span> -->
+            </form>
+        
+    </div>
+</div>
